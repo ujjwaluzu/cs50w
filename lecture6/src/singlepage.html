@@ -4,15 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single</title>
+    <style>
+        div {
+            display: none;
+        }
+    </style>
+    <script>
+        function showPage(page) {
+            document.querySelectorAll("div").forEach(div => {
+                div.style.display = "none";
+            })
+            document.querySelector(`#${page}`).style.display = "block";
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelectorAll("button").forEach(button => {
+                button.onclick = function(){
+                    showPage(this.dataset.page)
+                }
+            })
+        });
+    </script>
 </head>
 <body>
-    <div class="page1">
+    <button data-page="page1">Page 1</button>
+    <button data-page="page2">Page 2</button>
+    <button data-page="page3">Page 3</button>
+    <div id="page1">
         <h1>this is page 1</h1>
     </div>
-    <div class="page2">
+    <div id="page2">
         <h1>this is page 2</h1>
     </div>
-    <div class="page3">
+    <div id="page3">
         <h1>this is page 3</h1>
     </div>
 </body>
