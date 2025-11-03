@@ -6,6 +6,6 @@ def index(request):
 texts = ["text1", "text2", "text3"]
 def section(request, num):
     if 1 <= num <= 3:
-        return HttpResponse(texts(num-1))
+        return HttpResponse(texts[num-1])
     else:
         raise Http404("No such section")
