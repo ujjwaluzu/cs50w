@@ -1,11 +1,55 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Scroll</title>
-</head>
-<body>
-    
-</body>
+<html>
+    <head>
+        <title>My Webpage</title>
+        <style>
+            .post {
+                background-color: #77dd11;
+                padding: 20px;
+                margin: 10px;
+            }
+
+            body {
+                padding-bottom: 50px;
+            }
+        </style>
+        <script>
+            let counter = 1;
+            const quantity = 20;
+            document.addEventListener("DOMContentLoaded", load)
+
+            window.onscroll = () => {
+                if(window.innerHeight + window.scrollY >= document.body.offsetHeight-2){
+                    load();
+                }
+            }
+
+            function load(){
+                const start = counter;
+                const end = start+quantity-1;
+                counter = end+1;
+
+
+                fetch(`/posts?start=${start}&end=${end}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.posts.forEach(add_post);
+                })
+            };
+
+            function add_post(contents){
+                const post = document.createElement("div");
+                post.className = "post";
+                post.innerHTML = contents;
+
+                document.querySelector("#posts").append(post)
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id="posts">
+        </div>
+    </body>
 </html>
