@@ -26,8 +26,23 @@
             animation-iteration-count: infinite;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const h1 = document.querySelector("h1");
+            h1.style.animationPlayState = "paused";
+
+            document.querySelector("button").onclick = () =>{
+                if (h1.style.animationPlayState === "paused"){
+                    h1.style.animationPlayState = "running";
+                }else{
+                    h1.style.animationPlayState = "paused";
+                }
+            }
+        });
+    </script>
 </head>
 <body>
+    <button>Click here</button>
     <h1>Welcome!</h1>
 </body>
 </html>
