@@ -4,10 +4,20 @@
     <head>
         <title>My Webpage</title>
         <style>
+            @keyframes hide{
+                
+            }
+            .hide{
+                float:right;
+            }
             .post {
                 background-color: #77dd11;
                 padding: 20px;
                 margin: 10px;
+                animation-name: "hide";
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
             }
 
             body {
@@ -23,7 +33,15 @@
                 if(window.innerHeight + window.scrollY >= document.body.offsetHeight-2){
                     load();
                 }
-            }
+            };
+
+            document.addEventListener("click", event =>{
+                const element = event.target;
+
+                if (element.className === "hide"){
+                    element.parentElement.remove()
+                }
+            });
 
             function load(){
                 const start = counter;
@@ -41,7 +59,7 @@
             function add_post(contents){
                 const post = document.createElement("div");
                 post.className = "post";
-                post.innerHTML = contents;
+                post.innerHTML = `${contents} <button class="hide">Hide</button>`;
 
                 document.querySelector("#posts").append(post)
 
