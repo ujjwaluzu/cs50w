@@ -12,11 +12,20 @@
     <div id="app"></div>
 
     <script type="text/babel">
-        function App(){
-            const x = 1;
-            const y = 2;
+        function Hello(){
             return (
-                <div>{ x + y}</div>
+                <h1>Hello!</h1>
+            );
+        }
+        function App(){
+
+            return (
+                <div>
+                    <Hello />
+                    <Hello />
+                    <Hello />
+                </div>
+
             );
         }
         ReactDOM.render(<App />, document.querySelector("#app"));
