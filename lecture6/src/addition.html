@@ -32,7 +32,7 @@
             return(
                 <div>
                     <div>{state.num1} + {state.num2}</div>
-                    <input onChange={updateResponse} value={state.response}/>
+                    <input onKeypress={inputKeypress} onChange={updateResponse} value={state.response}/>
                     <div>Score: {state.score}</div>
                 </div>
             );
