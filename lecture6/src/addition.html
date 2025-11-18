@@ -26,9 +26,15 @@
                 if (event.key === "Enter"){
                     const answer = parseInt(state.response);
                     if (state.num1 + state.num2 === answer){
-                        // right ans
+                        setState({
+                            ...state,
+                            score: state.score + 1
+                        });
                     }else{
-                        // wrong ans
+                        setState({
+                            ...state,
+                            score: state.score - 1
+                        });
                     }
                 }
             }
@@ -43,7 +49,7 @@
             return(
                 <div>
                     <div>{state.num1} + {state.num2}</div>
-                    <input onKeypress={inputKeypress} onChange={updateResponse} value={state.response}/>
+                    <input onKeyPress={inputKeypress} onChange={updateResponse} value={state.response}/>
                     <div>Score: {state.score}</div>
                 </div>
             );
