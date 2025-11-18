@@ -28,12 +28,16 @@
                     if (state.num1 + state.num2 === answer){
                         setState({
                             ...state,
-                            score: state.score + 1
+                            response: "",
+                            score: state.score + 1,
+                            num1: Math.ceil(Math.random()*10),
+                            num2: Math.ceil(Math.random()*10)
                         });
                     }else{
                         setState({
                             ...state,
-                            score: state.score - 1
+                            score: state.score - 1,
+                            response: ""
                         });
                     }
                 }
