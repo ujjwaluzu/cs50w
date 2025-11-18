@@ -6,6 +6,18 @@
     <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        #app{
+            text-align: center;
+            font-family: sans-serif;
+        }
+        #problem{
+            font-size: 72px;
+        }
+        .incorrect{
+            color: red;
+        }
+    </style>
     <title>Counter</title>
 </head>
 <body>
@@ -19,6 +31,7 @@
                 num1: 1,
                 num2: 2,
                 response: "",
+                incorrect: false,
                 score: 0
             });
 
@@ -31,13 +44,15 @@
                             response: "",
                             score: state.score + 1,
                             num1: Math.ceil(Math.random()*10),
-                            num2: Math.ceil(Math.random()*10)
+                            num2: Math.ceil(Math.random()*10),
+                            incorrect: false
                         });
                     }else{
                         setState({
                             ...state,
                             score: state.score - 1,
-                            response: ""
+                            response: "",
+                            incorrect: true
                         });
                     }
                 }
@@ -52,7 +67,7 @@
 
             return(
                 <div>
-                    <div>{state.num1} + {state.num2}</div>
+                    <div class={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} + {state.num2}</div>
                     <input autoFocus={true} onKeyPress={inputKeypress} onChange={updateResponse} value={state.response}/>
                     <div>Score: {state.score}</div>
                 </div>
