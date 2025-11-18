@@ -17,6 +17,10 @@
         .incorrect{
             color: red;
         }
+        #winner {
+            font-size: 72px;
+            color: green;
+}
     </style>
     <title>Counter</title>
 </head>
@@ -65,6 +69,14 @@
                 });
             }
 
+
+            if (state.score === 10){
+                return(
+                    <div id="winner">
+                        You Won!
+                    </div>
+                )
+            }
             return(
                 <div>
                     <div class={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} + {state.num2}</div>
